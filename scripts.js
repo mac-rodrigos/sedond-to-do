@@ -47,7 +47,6 @@ function mostrarTarefas(){
          </li>
     `
 
-
 /* Para fazer a imagem da lixeira deletar um item foi preciso inserir um evento (onclick) que aciona a função deltarItem construída no código.  */
 
 /* Comentário 2 - Adicionamos um ${} dentro do onclick da imagem "tafera-excluida" (lixeira) e  colocamos o index(posicao) no forEach e na função deletarItem */
@@ -58,6 +57,8 @@ function mostrarTarefas(){
 
 listaCompleta.innerHTML = novaLi
 
+localStorage.setItem('lista', JSON.stringify(minhaListaDeItens));
+
 }
 
 function concluirTarefa(posicao) {
@@ -66,7 +67,16 @@ function concluirTarefa(posicao) {
 
 mostrarTarefas(); /* Precisamos inserir novamente a função mostrarTarefas para que o programa compreenda a necessidade de recalcular o Array depois de concluí-la. */
 
+}
 
+function recarregarTarefas() {
+    const tarefasDoLocalStorage = localStorage.getItem('lista')
+
+    if(tarefasDoLocalStorage) {
+    minhaListaDeItens = JSON.parse(tarefasDoLocalStorage)
+    console.log(tarefasDoLocalStorage);
+    }
+    mostrarTarefas()
 
 }
 

@@ -1,0 +1,6 @@
+body{ /*Corpo de todo o projeto*/
+    background: url("./img/background.png"); /* background url para trocar o fundo da página*/
+    display: flex;
+    justify-content: center;
+    padding-top: 0rem;
+}
