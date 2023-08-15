@@ -29,17 +29,22 @@ function mostrarTarefas(){
 
     let novaLi = '';
 
-    minhaListaDeItens.forEach(tarefa => { /* forEach pega itens de um array e executa as ações desejadas 1 por 1  */
+    minhaListaDeItens.forEach((tarefa, posicao) => { /* forEach pega itens de um array e executa as ações desejadas 1 por 1 -*/
+
+    /* Comentário 2 - O forEach também sabe a posição dos itens da lista geralmente usamos index, mas dessa vez será posicao */
 
     novaLi = novaLi + `
     
     <li class="task">  
             <img src="./img/checked.png" alt="tarefa-concluida">
             <p>${tarefa}</p>
-            <img src="./img/trash.png" alt="tarefa-excluida">
+            <img src="./img/trash.png" alt="tarefa-excluida" onclick="deletarItem(${posicao})">
          </li>
     `;
-/* As crases (``) permitem que eu utilize variáveis dentro de uma string. Nesse caso copiamos a lista do nosso HTML e inserimos dentro da variável novaLi e mudamos o texto antigo pelo elemento tarefa que ser[a obtido pela execução da função minhaListaDeItens. */
+/* Para fazer a imagem da lixeira deletar um item foi preciso inserir um evento (onclick) que aciona a função deltarItem construída no código.  */
+
+/* Comentário 2 - Adicionamos um ${} dentro do onclick e colocamos o index(posicao) do forEach */
+
 
 })
 
@@ -47,7 +52,10 @@ listaCompleta.innerHTML = novaLi
 
 }
 
-
-
+function deletarItem(posicao) {
+    minhaListaDeItens.splice(posicao, 1);  /* Splice é uma função do JS que exclui um item do meu array. Para isso preciso informá-lo sobre a posição do item e a quantidade de itens que será excluída. */
+    mostrarTarefas();
+    
+}
 
  button.addEventListener('click', adicionarNovaTarefa)   /* O JS fica de olho no meu botão e me avisa quando será clicado e leva o valor da função adicionar Nova Tarefa ao meu console. */
