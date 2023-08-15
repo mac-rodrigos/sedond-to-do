@@ -5,18 +5,45 @@
 // 2º Passo será mostrar a informação enviada na nossa tela;
 
 
-
  const button = document.querySelector('.button-add-task');  /* O primeiro passo geralmente será definir as variaveis do JS seleciondo-as com o nomes das classes que demos no HTML. Em Js, a palavra "document" sempre fará referência ao HTML. querySelector() Retorna o primeiro elemento descendente do elemento em que a função foi invocada e que corresponde aos seletores especificado. Nesse caso, utilizamos a classe '.button-add-task' ( o botão que adiciona uma tarefa em meu To-do. */
- 
+
 const input = document.querySelector('.input-task');
+const listaCompleta = document.querySelector('.list-tasks');
+
+
+
 
 let minhaListaDeItens = [] /* Abrir e fechar chaves inicia um array, ou seja, uma lista de itens a serem inseridos dentro de una variável ou função. */
 
 
 function adicionarNovaTarefa() {  /* O nomes das funções será um verbo com o descritivo do que ela faz console.log(input.value);  /*Adicionamos uma função que executa algo quando meu botão for acionado. Gerlamente usamos o comando "console.log para executar no console do navegador a ação desejada.*/
-    minhaListaDeItens.push(input.value); 
+    minhaListaDeItens.push(input.value);
+    mostrarTarefas() 
 
-    console.log(minhaListaDeItens) /* Criamos uma variável e inserirmos um array dentro dela ([]) em seguida mudamos o nome da função e adicionamos a variável como novo valor dentro dela.  */
+    input.value = "";
+
+    /* console.log(minhaListaDeItens) Criamos uma variável e inserirmos um array dentro dela ([]) em seguida mudamos o nome da função e adicionamos a variável como novo valor dentro dela.  */
+}
+
+function mostrarTarefas(){
+
+    let novaLi = '';
+
+    minhaListaDeItens.forEach(tarefa => { /* forEach pega itens de um array e executa as ações desejadas 1 por 1  */
+
+    novaLi = novaLi + `
+    
+    <li class="task">  
+            <img src="./img/checked.png" alt="tarefa-concluida">
+            <p>${tarefa}</p>
+            <img src="./img/trash.png" alt="tarefa-excluida">
+         </li>
+    `;
+/* As crases (``) permitem que eu utilize variáveis dentro de uma string. Nesse caso copiamos a lista do nosso HTML e inserimos dentro da variável novaLi e mudamos o texto antigo pelo elemento tarefa que ser[a obtido pela execução da função minhaListaDeItens. */
+
+})
+
+listaCompleta.innerHTML = novaLi
 
 }
 
