@@ -9,14 +9,32 @@
 
 body{ /*Corpo de todo o projeto*/
     background: url("./img/background.png"); /* background url para trocar o fundo da página*/
+    display: flex;
+    justify-content: center;
+    padding-top: 9rem;
 }
 
 .container { /*Quadro principal do projeto*/
+    
     background-color: #d1d1d1; /* background é o plano de fundo*/
     width: 500px; /* Widht é a largura da div*/
     border-radius: 10px; /* border-radius arredonda a borda da sua div*/
     padding: 20px; /* Padding é o espaçamento interno dos elementos da div*/
     margin: 100px, auto 0; /* Margem utilizada para centralizar elementos da div*/
+
+.titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    font-size: x-large;
+    font-weight: bold;
+    
+
+}
+
+    
 }
 
 .input-task { /*Iniciando uma tarefa no projeto*/
@@ -25,6 +43,7 @@ body{ /*Corpo de todo o projeto*/
     width: 320px;
     height: 40px;
     padding-left: 10px;
+    font-weight: bold;
 }
 
 .button-add-task { /*Botão para adicionar uma tarefa*/
@@ -71,8 +90,6 @@ body{ /*Corpo de todo o projeto*/
 
 }
 
-
-
 img { /*Imagens do projeto*/
     height: 25px;  /* Height é o tamanho, nesse caso, tamanho das minhas imagens*/
     opacity: 0;
@@ -81,4 +98,10 @@ img { /*Imagens do projeto*/
 
 .task:hover img{
     opacity: 1;
+}
+
+.done{ /*Marcação verde e traço da linha quando a tarefa estiver concluída.*/
+    background-color: #8fac55;
+    text-decoration: line-through;
+
 }
